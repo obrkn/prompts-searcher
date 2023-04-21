@@ -1,29 +1,32 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import * as React from "react";
+import {
+  AppBar,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  CssBaseline,
+  Grid,
+  Stack,
+  Box,
+  Toolbar,
+  Typography,
+  Container,
+  Link,
+} from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import data from "@/static/data.json";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -47,12 +50,12 @@ export default function Album() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: "background.paper",
             pt: 8,
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container>
             <Typography
               component="h1"
               variant="h2"
@@ -62,9 +65,20 @@ export default function Album() {
             >
               Awesome ChatGPT Prompts Searcher
             </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              This is visuble and keywords searcher for <Link href="https://github.com/f/awesome-chatgpt-prompts">Awesome ChatGPT Prompts</Link>.
-              When you use <Link href="https://openai.com/blog/chatgpt">ChatGPT</Link>, you can use this site to search for prompts.
+            <Typography
+              variant="h5"
+              align="center"
+              color="text.secondary"
+              paragraph
+            >
+              This is visuble and keywords searcher for{" "}
+              <Link href="https://github.com/f/awesome-chatgpt-prompts">
+                Awesome ChatGPT Prompts
+              </Link>
+              .<br />
+              When you use{" "}
+              <Link href="https://openai.com/blog/chatgpt">ChatGPT</Link>, you
+              can use this site to search for prompts.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -76,45 +90,58 @@ export default function Album() {
               <Button variant="outlined">Secondary action</Button>
             </Stack>
           </Container>
-        </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
+          <Container sx={{ py: 8 }}>
+            {/* End hero unit */}
+            {data.map((item, index) => (
+              <Card
+                key={item.act}
+                sx={{ display: "flex", justifyContent: "space-between", mt: 4 }}
+              >
+                {index % 2 === 0 && (
                   <CardMedia
                     component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
+                    sx={{ width: 151 }}
+                    image="/linux.jpeg"
+                    alt="Live from space album cover"
                   />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                )}
+                <Box sx={{ display: "flex", flexDirection: "column" }}>
+                  <CardContent sx={{ flex: "1 0 auto" }}>
+                    <Typography component="div" variant="h5">
+                      {item.act}
                     </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                    <Typography
+                      variant="subtitle1"
+                      color="text.secondary"
+                      component="div"
+                    >
+                      {item.prompt}
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      pl: 1,
+                      pb: 1,
+                    }}
+                  ></Box>
+                </Box>
+                {index % 2 === 1 && (
+                  <CardMedia
+                    component="img"
+                    sx={{ width: 151 }}
+                    image="/linux.jpeg"
+                    alt="Live from space album cover"
+                  />
+                )}
+              </Card>
             ))}
-          </Grid>
-        </Container>
+          </Container>
+        </Box>
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+      <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>
