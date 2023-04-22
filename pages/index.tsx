@@ -1,13 +1,10 @@
 import * as React from "react";
 import {
   AppBar,
-  Button,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   CssBaseline,
-  Grid,
   Stack,
   Box,
   Toolbar,
@@ -16,14 +13,12 @@ import {
   Link,
   CardActionArea,
   Fab,
-  Chip,
   Snackbar,
-  Alert,
   TextField,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import data from "@/static/data.json";
-import { FileCopy, GitHub } from "@mui/icons-material";
+import { FileCopy, GitHub, KeyboardArrowUp } from "@mui/icons-material";
 
 const theme = createTheme();
 
@@ -170,7 +165,14 @@ export default function Index() {
           </Container>
         </Box>
       </main>
-      {/* Footer */}
+      <Fab
+        color="primary"
+        aria-label="scroll back to top"
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        <KeyboardArrowUp />
+      </Fab>
       <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
           Footer
@@ -189,7 +191,6 @@ export default function Index() {
           {"."}
         </Typography>
       </Box>
-      {/* End footer */}
     </ThemeProvider>
   );
 }
