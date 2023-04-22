@@ -15,6 +15,10 @@ import {
   Container,
   Link,
   CardActionArea,
+  Fab,
+  Chip,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import data from "@/static/data.json";
@@ -22,9 +26,12 @@ import { FileCopy, GitHub } from "@mui/icons-material";
 
 const theme = createTheme();
 
-export default function Album() {
+export default function Index() {
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {};
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
+    setOpen(true);
   };
   return (
     <ThemeProvider theme={theme}>
@@ -36,8 +43,13 @@ export default function Album() {
           </Typography>
         </Toolbar>
       </AppBar>
+      <Snackbar
+        open={open}
+        autoHideDuration={800}
+        onClose={() => setOpen(false)}
+        message="Copied"
+      />
       <main>
-        {/* Hero unit */}
         <Box
           sx={{
             bgcolor: "background.paper",
@@ -82,17 +94,32 @@ export default function Album() {
           </Container>
           <Container sx={{ py: 8 }}>
             {/* End hero unit */}
-            {data.map((item, index) => (
+            {data.map((item) => (
+              // when clicked, tooltip will be shown "Copied!"
+
               <Card
                 key={item.act}
-                sx={{ mt: 4, display: "flex", justifyContent: "space-between" }}
+                sx={{
+                  mt: 4,
+                  [theme.breakpoints.up("sm")]: {
+                    display: "flex",
+                    justifyContent: "space-between",
+                  },
+                }}
                 onClick={() => copyToClipboard(item.prompt)}
               >
                 <CardMedia
                   component="img"
-                  sx={{ width: 151 }}
+                  sx={{
+                    [theme.breakpoints.up("sm")]: {
+                      width: 151,
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: 151,
+                    },
+                  }}
                   image={`/cards/${item.image}.jpeg`}
-                  alt="Live from space album cover"
+                  alt={item.act}
                 />
                 <CardActionArea>
                   <CardContent>
