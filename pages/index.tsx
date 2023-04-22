@@ -14,9 +14,11 @@ import {
   Typography,
   Container,
   Link,
+  CardActionArea,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import data from "@/static/data.json";
+import { FileCopy } from "@mui/icons-material";
 
 function Copyright() {
   return (
@@ -31,11 +33,12 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const theme = createTheme();
 
 export default function Album() {
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+  };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -95,18 +98,17 @@ export default function Album() {
             {data.map((item, index) => (
               <Card
                 key={item.act}
-                sx={{ display: "flex", justifyContent: "space-between", mt: 4 }}
+                sx={{ mt: 4, display: "flex", justifyContent: "space-between" }}
+                onClick={() => copyToClipboard(item.prompt)}
               >
-                {index % 2 === 0 && (
-                  <CardMedia
-                    component="img"
-                    sx={{ width: 151 }}
-                    image="/linux.jpeg"
-                    alt="Live from space album cover"
-                  />
-                )}
-                <Box sx={{ display: "flex", flexDirection: "column" }}>
-                  <CardContent sx={{ flex: "1 0 auto" }}>
+                <CardMedia
+                  component="img"
+                  sx={{ width: 151 }}
+                  image={`/cards/${item.image}.jpeg`}
+                  alt="Live from space album cover"
+                />
+                <CardActionArea>
+                  <CardContent>
                     <Typography component="div" variant="h5">
                       {item.act}
                     </Typography>
@@ -118,23 +120,10 @@ export default function Album() {
                       {item.prompt}
                     </Typography>
                   </CardContent>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      pl: 1,
-                      pb: 1,
-                    }}
-                  ></Box>
-                </Box>
-                {index % 2 === 1 && (
-                  <CardMedia
-                    component="img"
-                    sx={{ width: 151 }}
-                    image="/linux.jpeg"
-                    alt="Live from space album cover"
-                  />
-                )}
+                  <Box sx={{ position: "absolute", top: 8, right: 8 }}>
+                    <FileCopy color="disabled"/>
+                  </Box>
+                </CardActionArea>
               </Card>
             ))}
           </Container>
