@@ -19,6 +19,7 @@ import {
   Chip,
   Snackbar,
   Alert,
+  TextField,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import data from "@/static/data.json";
@@ -28,7 +29,21 @@ const theme = createTheme();
 
 export default function Index() {
   const [open, setOpen] = React.useState(false);
-  const handleClose = () => {};
+  const [items, setItems] = React.useState(data);
+  const handleChangeKeyword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const keyword = event.target.value.toLowerCase();
+    if (keyword === "") {
+      setItems(data);
+      return;
+    }
+    const newItems = data.filter((item) => {
+      return (
+        item.act.toLowerCase().includes(keyword) ||
+        item.prompt.toLowerCase().includes(keyword)
+      );
+    });
+    setItems(newItems);
+  };
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     setOpen(true);
@@ -88,17 +103,28 @@ export default function Index() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              <TextField
+                label="Search with a keyword"
+                variant="standard"
+                fullWidth
+                onChange={handleChangeKeyword}
+              />
             </Stack>
           </Container>
           <Container sx={{ py: 8 }}>
-            {/* End hero unit */}
-            {data.map((item) => (
-              // when clicked, tooltip will be shown "Copied!"
-
+            {items.length === 0 && (
+              <Typography
+                variant="subtitle1"
+                color="text.secondary"
+                component="div"
+                sx={{ textAlign: "center" }}
+              >
+                No result
+              </Typography>
+            )}
+            {items.map((item, index) => (
               <Card
-                key={item.act}
+                key={`${item.act}_${index}`}
                 sx={{
                   mt: 4,
                   [theme.breakpoints.up("sm")]: {
@@ -120,6 +146,7 @@ export default function Index() {
                   }}
                   image={`/cards/${item.image}.jpeg`}
                   alt={item.act}
+                  loading="lazy"
                 />
                 <CardActionArea>
                   <CardContent>
