@@ -18,20 +18,7 @@ import {
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import data from "@/static/data.json";
-import { FileCopy } from "@mui/icons-material";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import { FileCopy, GitHub } from "@mui/icons-material";
 
 const theme = createTheme();
 
@@ -121,7 +108,7 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <Box sx={{ position: "absolute", top: 8, right: 8 }}>
-                    <FileCopy color="disabled"/>
+                    <FileCopy color="disabled" />
                   </Box>
                 </CardActionArea>
               </Card>
@@ -134,15 +121,19 @@ export default function Album() {
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>
+        <GitHub color="disabled" sx={{ textAlign: "center", width: "100%" }} />
         <Typography
           variant="subtitle1"
           align="center"
           color="text.secondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          {"Please come to "}
+          <Link color="inherit" href="https://github.com/obrkn">
+            My GitHub Profile
+          </Link>
+          {"."}
         </Typography>
-        <Copyright />
       </Box>
       {/* End footer */}
     </ThemeProvider>
