@@ -1,8 +1,8 @@
 # Awesome ChatGPT Prompts Searcher
 https://prompts-searcher.vercel.app/
 
-This is a visible prompts searcher for [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts) by keywords.
-When you use [ChatGPT](https://openai.com/blog/chatgpt), you can use this site to search for prompts.
+This is a visible searcher for [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts) using keywords.
+When using [ChatGPT](https://openai.com/blog/chatgpt), please try to find a best actor for your purpose.
 
 ## Languages and Tools
 - Next.js
