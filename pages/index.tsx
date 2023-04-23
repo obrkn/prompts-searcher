@@ -19,6 +19,7 @@ import {
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import data from "@/static/data.json";
 import { FileCopy, GitHub, KeyboardArrowUp } from "@mui/icons-material";
+import Head from "next/head";
 
 const theme = createTheme();
 
@@ -45,6 +46,9 @@ export default function Index() {
   };
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <title>Awesome ChatGPT Prompts Searcher</title>
+      </Head>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
@@ -83,14 +87,14 @@ export default function Index() {
               color="text.secondary"
               paragraph
             >
-              This is a visible prompts searcher for{" "}
+              This is a visible searcher for{" "}
               <Link href="https://github.com/f/awesome-chatgpt-prompts">
                 Awesome ChatGPT Prompts
               </Link>
-              by keywords.<br />
-              When you use{" "}
-              <Link href="https://openai.com/blog/chatgpt">ChatGPT</Link>, you
-              can use this site to search for prompts.
+              {" "}using keywords.<br />
+              When using{" "}
+              <Link href="https://openai.com/blog/chatgpt">ChatGPT</Link>,{" "}
+              please try to find a best actor for your purpose.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
