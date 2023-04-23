@@ -83,11 +83,11 @@ export default function Index() {
               color="text.secondary"
               paragraph
             >
-              This is visible and keywords searcher for{" "}
+              This is a visible prompts searcher for{" "}
               <Link href="https://github.com/f/awesome-chatgpt-prompts">
                 Awesome ChatGPT Prompts
               </Link>
-              .<br />
+              by keywords.<br />
               When you use{" "}
               <Link href="https://openai.com/blog/chatgpt">ChatGPT</Link>, you
               can use this site to search for prompts.
