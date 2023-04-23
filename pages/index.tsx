@@ -83,7 +83,7 @@ export default function Index() {
               color="text.secondary"
               paragraph
             >
-              This is visuble and keywords searcher for{" "}
+              This is visible and keywords searcher for{" "}
               <Link href="https://github.com/f/awesome-chatgpt-prompts">
                 Awesome ChatGPT Prompts
               </Link>
@@ -102,6 +102,7 @@ export default function Index() {
                 label="Search with a keyword"
                 variant="standard"
                 fullWidth
+                sx={{ maxWidth: 600 }}
                 onChange={handleChangeKeyword}
               />
             </Stack>
@@ -174,9 +175,6 @@ export default function Index() {
         <KeyboardArrowUp />
       </Fab>
       <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
         <GitHub color="disabled" sx={{ textAlign: "center", width: "100%" }} />
         <Typography
           variant="subtitle1"
