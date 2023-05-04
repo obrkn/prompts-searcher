@@ -1,5 +1,5 @@
 # Awesome ChatGPT Prompts Searcher
-https://prompts-searcher.vercel.app/
+https://prompts.obrkn.com
 
 This is a visible searcher for [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts) using keywords.
 When using [ChatGPT](https://openai.com/blog/chatgpt), please try to find a best actor for your purpose.
